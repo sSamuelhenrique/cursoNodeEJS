@@ -8,7 +8,15 @@
         <div class="jumbotron">
             <h1>Sobre</h1>
             <p>Olá me chamo Teste</p>
+            <p><%= subtitle %></p>
         </div>
+        <ul>
+            <% qualitys.forEach(function(quality){ %>
+                <li><Strong><%= quality.title %></Strong><%= quality.message %></li>
+
+            <% }) %>
+
+        </ul>
     </main>
 
     <%- include('../partials/footer'); %>

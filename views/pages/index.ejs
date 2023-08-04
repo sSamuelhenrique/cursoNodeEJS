@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+    <!-- ESTOU INCLUÍNDO O ARQUIVO head QUE É UM ejs, ASSIM CASO EXISTA MAIS ARQUVOS QUE TENHA O MESMO HEAD, BASTA CHAMA-LO ATRAVES DO EJS -->
 <%- include('../partials/head'); %>
 <body class="container">
- <%- include('../partials/header'); %>
+    <!-- ESTOU INCLUÍNDO header QUE É UM ejs, E PASSANDO UM OBJETO COMO PARAMÊTRO, SENDO POSSIVEL ACESSAR DENTRO DO ARQUIVO header.ejs ESSE OBJETO USANDO
+    A KEY pagina   -->
+ <%- include('../partials/header', {pagina: 'Home'}); %>
     <main>
         <div class="jumbotron">
             <h1>Node com EJS</h1>
             <p>Vamos aprender a trabalhar com arquivos EJS</p>
+            <!--  <%= %> USADA PARA INSERIR VALORES DINAMICOS NO HTML QUE ESTÁ SENDO RENDERIZADO.
+            ENTÃO ESTOU INSERINDO O VALOR DE subtitle QUE ESTÁ LA NO ARQUIVO server.js NA TAG p QUE SERÁ RENDERIZADA -->
+            <p><%= subtitle %></p>
         </div>
+        <ul>
+            <!-- LAÇO forEach ONDE quality RECEBE CADA OBJETO DO ARRAY QUE É VALOR DE qualitys LA NO ARQUIVO server.js -->
+            <% qualitys.forEach(function(quality){ %>
+                <!-- <%= %> SERÁ USADA PARA INSERIR O value DE CADA key DO OBJETO quality -->
+                <li><strong><%= quality.title %></strong> <%= quality.message %></li>
+            <%})%>
+        </ul>
     </main>
-<%- include('../partials/footer'); %>
+<%- include('../partials/footer');  %>
 </body>
 </html>
